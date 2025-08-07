@@ -3,6 +3,7 @@
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=omnius-labs&repo=core-cs&theme=transparent)](https://github.com/omnius-labs/core-cs)
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=omnius-labs&repo=core-swift&theme=transparent)](https://github.com/omnius-labs/core-swift)
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=omnius-labs&repo=core-go&theme=transparent)](https://github.com/omnius-labs/core-go)
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=omnius-labs&repo=core-scala&theme=transparent)](https://github.com/omnius-labs/core-scala)
 
 ## Axus
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=omnius-labs&repo=axus-daemon-rs&theme=transparent)](https://github.com/omnius-labs/axus-daemon-rs)

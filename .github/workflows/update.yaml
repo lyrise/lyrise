@@ -31,18 +31,82 @@ jobs:
           path: profile/top-langs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate pin card
+      - name: Generate pin card (omnius-labs/axus)
         uses: readme-tools/github-readme-stats-action@v1
         with:
           card: pin
-          options: username=readme-tools&repo=github-readme-stats
-          path: profile/pin-readme-tools-github-readme-stats.svg
+          options: username=omnius-labs&repo=axus
+          path: profile/pin-omnius-labs-axus.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin card (omnius-labs/core-rs)
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=omnius-labs&repo=core-rs
+          path: profile/pin-omnius-labs-core-rs.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin card (omnius-labs/core-cs)
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=omnius-labs&repo=core-cs
+          path: profile/pin-omnius-labs-core-cs.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin card (omnius-labs/core-swift)
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=omnius-labs&repo=core-swift
+          path: profile/pin-omnius-labs-core-swift.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin card (omnius-labs/core-go)
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=omnius-labs&repo=core-go
+          path: profile/pin-omnius-labs-core-go.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin card (omnius-labs/core-scala)
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=omnius-labs&repo=core-scala
+          path: profile/pin-omnius-labs-core-scala.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin card (lyrise/tredir-rs)
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=lyrise&repo=tredir-rs
+          path: profile/pin-lyrise-tredir-rs.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin card (lyrise/uredir-rs)
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=lyrise&repo=uredir-rs
+          path: profile/pin-lyrise-uredir-rs.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate pin card (lyrise/fredir-rs)
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=lyrise&repo=fredir-rs
+          path: profile/pin-lyrise-fredir-rs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit cards
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add profile/*.svg
           git commit -m "Update README cards" || exit 0
           git push

@@ -1,12 +1,12 @@
-name: Update README cards
+name: Update GitHub Metrics
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs once daily at midnight
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
-  build:
+  metrics:
     runs-on: ubuntu-latest
 
     permissions:
@@ -15,98 +15,47 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Generate stats card
-        uses: readme-tools/github-readme-stats-action@v1
+      - name: Generate classic metrics
+        uses: lowlighter/metrics@latest
         with:
-          card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true
-          path: profile/stats.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          filename: profile/metrics.svg
+          token: ${{ secrets.METRICS_TOKEN || github.token }}
+          user: ${{ github.repository_owner }}
+          template: classic
+          base: header, activity, community, repositories, metadata
+          config_timezone: Asia/Tokyo
+          plugin_lines: yes
 
-      - name: Generate top languages card
-        uses: readme-tools/github-readme-stats-action@v1
+      - name: Generate languages metrics
+        uses: lowlighter/metrics@latest
         with:
-          card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&langs_count=8
-          path: profile/top-langs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          filename: profile/metrics-languages.svg
+          token: ${{ secrets.METRICS_TOKEN || github.token }}
+          user: ${{ github.repository_owner }}
+          template: classic
+          base: ""
+          config_timezone: Asia/Tokyo
+          plugin_languages: yes
+          plugin_languages_limit: 8
+          plugin_languages_sections: most-used, recently-used
+          plugin_languages_details: bytes-size, percentage
 
-      - name: Generate pin card (omnius-labs/axus)
-        uses: readme-tools/github-readme-stats-action@v1
+      - name: Generate repositories metrics
+        uses: lowlighter/metrics@latest
         with:
-          card: pin
-          options: username=omnius-labs&repo=axus
-          path: profile/pin-omnius-labs-axus.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          filename: profile/metrics-repositories.svg
+          token: ${{ secrets.METRICS_TOKEN || github.token }}
+          user: ${{ github.repository_owner }}
+          template: classic
+          base: ""
+          plugin_repositories: yes
+          plugin_repositories_order: featured
+          plugin_repositories_featured: omnius-labs/axus, omnius-labs/core-rs, omnius-labs/core-cs, omnius-labs/core-swift, omnius-labs/core-go, omnius-labs/core-scala, lyrise/tredir-rs, lyrise/uredir-rs, lyrise/fredir-rs
 
-      - name: Generate pin card (omnius-labs/core-rs)
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=omnius-labs&repo=core-rs
-          path: profile/pin-omnius-labs-core-rs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate pin card (omnius-labs/core-cs)
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=omnius-labs&repo=core-cs
-          path: profile/pin-omnius-labs-core-cs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate pin card (omnius-labs/core-swift)
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=omnius-labs&repo=core-swift
-          path: profile/pin-omnius-labs-core-swift.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate pin card (omnius-labs/core-go)
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=omnius-labs&repo=core-go
-          path: profile/pin-omnius-labs-core-go.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate pin card (omnius-labs/core-scala)
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=omnius-labs&repo=core-scala
-          path: profile/pin-omnius-labs-core-scala.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate pin card (lyrise/tredir-rs)
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=lyrise&repo=tredir-rs
-          path: profile/pin-lyrise-tredir-rs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate pin card (lyrise/uredir-rs)
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=lyrise&repo=uredir-rs
-          path: profile/pin-lyrise-uredir-rs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate pin card (lyrise/fredir-rs)
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=lyrise&repo=fredir-rs
-          path: profile/pin-lyrise-fredir-rs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Commit cards
+      - name: Commit metrics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add profile/*.svg
-          git commit -m "Update README cards" || exit 0
+          git add profile/metrics*.svg
+          git commit -m "Update GitHub metrics" || exit 0
           git push

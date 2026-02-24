@@ -40,7 +40,6 @@
                                 Rust
                             </div>
                             <small>
-                                <div>118 kB</div>
                                 <div>34.39%</div>
                             </small>
                         </div>
@@ -52,7 +51,6 @@
                                 C#
                             </div>
                             <small>
-                                <div>55.1 kB</div>
                                 <div>16.03%</div>
                             </small>
                         </div>
@@ -64,7 +62,6 @@
                                 TypeScript
                             </div>
                             <small>
-                                <div>13.5 kB</div>
                                 <div>3.93%</div>
                             </small>
                         </div>
@@ -76,7 +73,6 @@
                                 Dockerfile
                             </div>
                             <small>
-                                <div>5.01 kB</div>
                                 <div>1.46%</div>
                             </small>
                         </div>
@@ -90,7 +86,6 @@
                                 Swift
                             </div>
                             <small>
-                                <div>114 kB</div>
                                 <div>33.24%</div>
                             </small>
                         </div>
@@ -102,7 +97,6 @@
                                 Shell
                             </div>
                             <small>
-                                <div>27.1 kB</div>
                                 <div>7.9%</div>
                             </small>
                         </div>
@@ -114,7 +108,6 @@
                                 Go
                             </div>
                             <small>
-                                <div>7.73 kB</div>
                                 <div>2.25%</div>
                             </small>
                         </div>
@@ -126,7 +119,6 @@
                                 Python
                             </div>
                             <small>
-                                <div>2.73 kB</div>
                                 <div>0.79%</div>
                             </small>
                         </div>

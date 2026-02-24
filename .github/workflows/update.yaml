@@ -50,7 +50,7 @@ jobs:
           base: ""
           plugin_repositories: yes
           plugin_repositories_order: featured
-          plugin_repositories_featured: omnius-labs/axus, omnius-labs/core-rs, omnius-labs/core-cs, omnius-labs/core-swift, omnius-labs/core-go, omnius-labs/core-scala, lyrise/tredir-rs, lyrise/uredir-rs, lyrise/fredir-rs
+          plugin_repositories_featured: omnius-labs/axus, omnius-labs/core-rs, omnius-labs/core-cs, omnius-labs/core-swift, omnius-labs/core-go, omnius-labs/core-scala
 
       - name: Commit metrics
         run: |

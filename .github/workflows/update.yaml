@@ -15,7 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      # rate limit 取得に失敗すると TypeError を投げて exit 1 する。
+      # SVG 自体は生成・コミット済みなので、後続ステップを止めないようにする。
       - name: Generate classic metrics
+        continue-on-error: true
         uses: lowlighter/metrics@latest
         with:
           filename: profile/metrics.svg
@@ -27,6 +30,7 @@ jobs:
           plugin_lines: yes
 
       - name: Generate languages metrics
+        continue-on-error: true
         uses: lowlighter/metrics@latest
         with:
           filename: profile/metrics-languages.svg
@@ -43,6 +47,7 @@ jobs:
           plugin_languages_indepth: true
 
       - name: Generate repositories metrics
+        continue-on-error: true
         uses: lowlighter/metrics@latest
         with:
           filename: profile/metrics-repositories.svg
@@ -53,11 +58,3 @@ jobs:
           plugin_repositories: yes
           plugin_repositories_order: featured
           plugin_repositories_featured: omnius-labs/axus, omnius-labs/core-rs, omnius-labs/core-cs, omnius-labs/core-swift, omnius-labs/core-go, omnius-labs/core-scala
-
-      - name: Commit metrics
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add profile/metrics*.svg
-          git commit -m "Update GitHub metrics" || exit 0
-          git push
